@@ -1,0 +1,16 @@
+
+.slider{
+  background: linear-gradient(0.25turn, #1b1a17, #050505, #503213);
+  height:700px;
+  margin: auto;
+}
+
+ .slideimg{
+   height:450px;
+ }
+
+.slider-title{
+  background-color:rgba(255, 255, 255, 0.089);
+  padding:40px;
+  margin: auto;
+}
