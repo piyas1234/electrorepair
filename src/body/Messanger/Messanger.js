@@ -17,7 +17,7 @@ function Messanger() {
             style={{
               position: "fixed",
               zIndex: "100",
-              top: "500px",
+              top: "600px",
               width: "100px",
               boxShadow: "3px 3px 3px gray",
             }}
@@ -30,6 +30,7 @@ function Messanger() {
               alt=""
               srcset=""
             />
+            <h5 className="text-warning">Send Message</h5>
           </div>
         </div>
       </div>
@@ -38,11 +39,11 @@ function Messanger() {
         <Modal.Header  style={{backgroundColor:"#FF65BF", color:"white"}} closeButton>
           <Modal.Title>Customer service</Modal.Title>
         </Modal.Header>
-        <span className="bg-primary text-white">hello {localStorage.getItem("displayName") || "sir"},</span>
+        <span style={{backgroundColor:"#5EDEFB"}} className="text-white">hello {localStorage.getItem("displayName") || "sir"},</span>
         <Modal.Body  style={{backgroundColor:"#3E270F"}}> <Body></Body> </Modal.Body>
         <Modal.Footer  style={{backgroundColor:"#3E270F"}}>
           
-          <Button variant="primary" onClick={handleClose}>
+          <Button className="text-white"  variant="warning" onClick={handleClose}>
             close
           </Button>
         </Modal.Footer>

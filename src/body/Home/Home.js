@@ -22,7 +22,7 @@ const Home = () => {
     });
   }, []);
   return data.length < 1 && review.length < 1 ? (
-    <Spinner></Spinner>
+    <div style={{height:"1000px"}}> <Spinner></Spinner></div>
   ) : (
     <div>
       <Slider></Slider>

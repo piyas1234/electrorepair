@@ -81,7 +81,8 @@ const Body = () => {
           <input
             disabled={!input}
             onClick={onClickHandler}
-            className="btn btn-primary"
+            style={{backgroundColor:"#5EDEFB"}}
+            className="btn text-white ml-2"
             type="submit"
             value="Send"
           />
