@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Api from "../Axios/Api";
+import Spinner from "../Shared/Spinner";
 import About from "./components/About";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import OurServiceList from "./components/OurServiceList";
 import Reviews from "./components/Reviews";
@@ -20,7 +20,10 @@ const Home = () => {
       setreview(res.data);
     });
   }, []);
-  return (
+  return data.length < 1 && review.length<1 ? (
+     <Spinner></Spinner>
+     
+  ) :(
     <div>
       <Slider></Slider>
       <Services data={data}></Services>

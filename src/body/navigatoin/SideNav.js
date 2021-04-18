@@ -1,32 +1,29 @@
-import {
-  faFacebookMessenger,
-  faShopify,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faPaperPlane,
-  faPlus,
-  faShoppingBag,
-  faUser,
-  faUserCog,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+ 
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import Api from "../Axios/Api";
 import img from '../images/booking.png'
 import img2 from '../images/vault.png'
 import img3 from '../images/feedback.png'
 
+import orderList from '../images/notepad.png'
+import addService from '../images/add.png'
+import addAdmin from '../images/follow.png'
+import manageService from '../images/share.png'
+import services from  '../images/stopwatch.png'
+import { AdminContex } from "../../App";
+
+
 const SideNav = () => {
-  const [admin, setadmin] = useState(false);
-  useEffect(() => {
-    Api.post("/isAdmin", { email: localStorage.getItem("email") }).then(
-      (res) => {
-        setadmin(res.data);
-      }
-    );
-  }, []);
+  // const [admin, setadmin] = useState(false);
+  // useEffect(() => {
+  //   Api.post("/isAdmin", { email: localStorage.getItem("email") }).then(
+  //     (res) => {
+  //       setadmin(res.data);
+  //     }
+  //   );
+  // }, []);
+  const [admin, setadmin] =useContext(AdminContex)
   return (
     <div className="text-white sideNav shadow">
       <div className="p-3 mx-3"></div>
@@ -34,13 +31,20 @@ const SideNav = () => {
       {admin ? (
         <>
           <div className="m-2">
-            <FontAwesomeIcon size="2x" icon={faShopify}></FontAwesomeIcon>
+          <img width="40px" src={services} alt="" srcset=""/>{" "}
             <Link to="/deshboard" style={{ fontSize: "22px", color: "white" }}>
+              services
+            </Link>
+          </div>
+           <div className="m-2">
+          <img width="40px" src={orderList} alt="" srcset=""/>{" "}
+            <Link to="/orderlist" style={{ fontSize: "22px", color: "white" }}>
               OrderList
             </Link>
           </div>
+          
           <div className="m-2">
-            <FontAwesomeIcon size="2x" icon={faPlus}></FontAwesomeIcon>
+          <img width="40px" src={addService} alt="" srcset=""/>{" "}
             <Link
               to="/addservices"
               style={{ fontSize: "22px", color: "white" }}
@@ -49,13 +53,13 @@ const SideNav = () => {
             </Link>
           </div>
           <div className="m-2">
-            <FontAwesomeIcon size="2x" icon={faUser}></FontAwesomeIcon>
+          <img width="40px" src={addAdmin} alt="" srcset=""/>{" "}
             <Link to="/makeadmin" style={{ fontSize: "22px", color: "white" }}>
-              Make Admin
+              add Admin
             </Link>
           </div>
           <div className="m-2">
-            <FontAwesomeIcon size="2x" icon={faUserCog}></FontAwesomeIcon>
+          <img width="40px" src={manageService} alt="" srcset=""/>{" "}
             <Link
               to="/manageservices"
               style={{ fontSize: "22px", color: "white" }}
@@ -66,6 +70,12 @@ const SideNav = () => {
         </>
       ) : (
         <>
+        <div className="m-2">
+          <img width="40px" src={orderList} alt="" srcset=""/>{" "}
+            <Link to="/deshboard" style={{ fontSize: "22px", color: "white" }}>
+              services
+            </Link>
+          </div>
           <div className="m-2">
           <img width="40px" src={img} alt="" srcset=""/>
             <Link to="/book" style={{ fontSize: "20px", color: "white" }}>

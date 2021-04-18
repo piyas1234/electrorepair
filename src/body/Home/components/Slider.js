@@ -5,6 +5,8 @@ import img from "../../images/img3.jpg";
 import img1 from "../../images/img5.jpg";
 import img2 from "../../images/img6.jpg";
 import img3 from "../../images/img7.jpg";
+import men from '../../images/idea (1).png'
+import { Link } from "react-router-dom";
 const Slider = () => {
   const data = [
     {
@@ -49,9 +51,10 @@ const Slider = () => {
                   </div>
                   <div className="col-md-4">
                     <Carousel.Caption className="slider-title">
+                      <img width="100px" src={men} alt="" srcset=""/>
                       <h3>{title}</h3>
                       <p>{description}</p>
-                      <button className="btn shadow text-white btn-warning" type="submit">make a order</button>
+                      <Link className="btn shadow text-white btn-warning" to="/deshboard">make a order</Link>
                     </Carousel.Caption>
                   </div>
                 </div>

@@ -8,8 +8,8 @@ const About = () => {
   return (
     <div style={{ backgroundColor: "#FFF8F5" }} className="py-5">
       <h4
-        style={{ color: "tomato", fontWeight: "bold",width:"400px",boxShadow:"4px 4px 4px 4px gray"}}
-        className="m-auto   text-center py-3"
+        style={{ color: "tomato", fontWeight: "bold",width:"300px",boxShadow:"4px 4px 4px 4px gray"}}
+        className="m-auto   text-center py-2"
       >
         {" "}
         About us

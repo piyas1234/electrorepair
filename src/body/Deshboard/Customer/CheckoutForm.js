@@ -35,8 +35,6 @@ const CardForm = ({setpayment}) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
@@ -44,14 +42,16 @@ const CardForm = ({setpayment}) => {
       type: "card",
       card: elements.getElement(CardElement)
     });
-
-     setpayment(payload)
+    payload.error?
+     setpayment("error"):
+     setpayment("success")
     console.log("[PaymentMethod]", payload);
   };
   
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <>
+    <form className="" onSubmit={handleSubmit}>
+      <label className="label">
         Card details
         <CardElement
         
@@ -70,11 +70,13 @@ const CardForm = ({setpayment}) => {
           }}
         />
       </label>
-      <button type="submit" disabled={!stripe}>
-        Pay
-      </button>
-     
+      <br/>
+      <button className="button " type="submit" disabled={!stripe}>
+     Pay
+   </button>
     </form>
+     
+   </>
   );
 };
 

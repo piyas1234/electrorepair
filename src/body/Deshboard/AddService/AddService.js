@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import {AdminContex} from '../../../App'
+import { AdminContex } from "../../../App";
 import { useForm } from "react-hook-form";
 import SideNav from "../../navigatoin/SideNav";
-import Api from '../../Axios/Api'
+import Api from "../../Axios/Api";
 import axios from "axios";
 import "../style.css";
 import { Redirect } from "react-router";
+import Title from "../Customer/Title";
 const AddService = () => {
+  const [msg, setmsg] = useState("");
   const [loading, setloading] = useState(false);
   const [photoUrl, setphotoUrl] = useState(null);
   const [admin, setadmin] = useContext(AdminContex);
@@ -15,11 +17,6 @@ const AddService = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
- 
-  useEffect(() => {
-    !admin &&    <Redirect  to="/book" />
-  }, [admin])
 
   const onChangeHandler = (event) => {
     console.log("onChangeHandler");
@@ -35,36 +32,53 @@ const AddService = () => {
       .then((response) => {
         setphotoUrl(response.data.data.display_url);
         setloading(false);
+        setmsg("image upload successfully");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  console.log(photoUrl);
-  const onSubmit = (data) => {
-    console.log(data)
-     Api.post('/addServices',{
-       title:data.title,
-       description:data.description,
-       price:data.price,
-       image:photoUrl
-     })
-     .then((response) =>{
-       console.log(response)
-     })
-  }
 
-  return (
+  const onSubmit = (data) => {
+    if (photoUrl) {
+      Api.post("/addServices", {
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        image: photoUrl,
+      }).then((response) => {
+        setmsg("your service saved!");
+      });
+    } else {
+      setmsg("please upload product image!");
+    }
+  };
+
+  return !admin ? (
+    <Redirect to="/checkout" />
+  ) : (
     <div className="row orderList">
       <div className="col-md-2">
         <SideNav></SideNav>
       </div>
-      <div className="col-md-10">
-        <div className="d-flex   mt-3 bg-white p-3">
-          <h3>Add Service</h3>
-          <h5 className="ml-auto">Piyas Talukder</h5>
-        </div>
-
+      <div className="col-md-9 text-white">
+        <Title title={"add Service"}></Title>
+        {msg && (
+          <div
+            class="alert alert-warning alert-dismissible fade show mt-4"
+            role="alert"
+          >
+            <strong>{msg}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        )}
         <div className="my-4">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
@@ -72,44 +86,44 @@ const AddService = () => {
                 <div className="form-group">
                   <label htmlFor="Service title">Service title</label>
                   <input
-                    name = "title"
+                    name="title"
                     className="form-control"
                     type="text"
                     {...register("title", { required: true })}
                   />
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
+                  {errors.title && <span className="text-warning">This field is required</span>}
                 </div>
                 <div className="form-group">
-                <label htmlFor="Service Description">Service Description</label>
+                  <label htmlFor="Service Description">
+                    Service Description
+                  </label>
                   <input
-                    name = "description"
+                    name="description"
                     className="form-control"
                     type="text"
                     {...register("description", { required: true })}
                   />
-                  
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
-                </div> 
-                <div className="form-group">
-                <label htmlFor="Service Description">Service Price</label>
-                  <input
-                    name = "price"
-                    className="form-control"
-                    type="text"
-                    {...register("price", { required: true })}
-                  />
-                  
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
+
+                  {errors.description && <span className="text-warning">This field is required</span>}
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group">
+                  <label htmlFor="Service Description">Service Price</label>
+                  <input
+                    name="price"
+                    className="form-control"
+                    type="text"
+                    {...register("price", { required: true })}
+                  />
+
+                  {errors.price && <span className="text-warning">This field is required</span>}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="Service Description">Service image</label>
+                  {loading && <div class="spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>}
                   <input
                     onChange={onChangeHandler}
                     name="photo"
@@ -120,7 +134,7 @@ const AddService = () => {
               </div>
             </div>
 
-            <input type="submit" />
+            <input className="btn btn-primary" type="submit" />
           </form>
         </div>
       </div>

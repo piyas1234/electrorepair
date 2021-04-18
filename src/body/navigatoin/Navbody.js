@@ -4,12 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 import NavProfile from "./NavProfile";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeartbeat } from "@fortawesome/free-solid-svg-icons";
-
+import img from '../images/idea (1).png'
 const Navbody = () => {
   const [inputData, setinputData] = useContext(UserContext);
-  const { displayName, email } = inputData;
+  const { displayName, email ,photoURL } = inputData;
   const path = useLocation().pathname;
   
   const color = path === "/logn" || path === "/signup" ?"rgb(255, 101, 191)":"white" 
@@ -43,7 +41,7 @@ const Navbody = () => {
         <Navbar.Brand>
           {" "}
           <Link style={navStyle} to="/">
-            <FontAwesomeIcon size="1x" icon={faHeartbeat}></FontAwesomeIcon>{" "}
+             <img width="50px" src={img} alt="" srcset=""/>
             ElectroRepair
           </Link>
         </Navbar.Brand>

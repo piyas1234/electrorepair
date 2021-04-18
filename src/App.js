@@ -26,7 +26,7 @@ function App() {
         setadmin(res.data);
       }
     );
-  }, []);
+  }, [loggedinUser]);
   return (
     <div  >
        <UserContext.Provider
