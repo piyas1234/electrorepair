@@ -6,6 +6,7 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import OurServiceList from "./components/OurServiceList";
 import Reviews from "./components/Reviews";
+import ServicebyType from "./components/ServicebyType";
 import Services from "./components/Services";
 import Slider from "./components/Slider";
 
@@ -31,6 +32,7 @@ const Home = () => {
     <div>
       <Slider></Slider>
       <Services data={data}></Services>
+      <ServicebyType data={data}></ServicebyType>
       <Messanger></Messanger>
       <OurServiceList></OurServiceList>
       <About></About>
