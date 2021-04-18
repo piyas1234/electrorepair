@@ -12,10 +12,22 @@ Author : Piyas Talukder
 
 About project:
  
-- this project is about Online shop 
+- this project is about Online shop
+- navbar
+- slider
+- serives 
+- about 
+- reviews 
+- footer 
 - Admin Panel incuded
 - social login incuded with email and password login
 - sigle page application by react
+
+extra features:
+
+- messanger
+- service type
+
 
 
 

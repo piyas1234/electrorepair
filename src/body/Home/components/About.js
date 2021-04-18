@@ -1,5 +1,5 @@
 import { faServicestack } from "@fortawesome/free-brands-svg-icons";
-import { faUser, faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import img from '../../images/iphonex.png'
 import React from "react";

@@ -23,7 +23,7 @@ const NavProfile = (props) => {
     setadmin(false);
     setLoginStorage("", "", "", "");
   };
-console.log(photoURL)
+  console.log(photoURL);
   return (
     <>
       <div className="ml-2" onClick={() => setLgShow(true)}>
@@ -52,7 +52,7 @@ console.log(photoURL)
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-            {photoURL  ? (
+            {photoURL ? (
               <img
                 width="160px"
                 className="card"

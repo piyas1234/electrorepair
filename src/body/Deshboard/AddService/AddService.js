@@ -39,13 +39,14 @@ const AddService = () => {
       });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = ({title, description , price , type }) => {
     if (photoUrl) {
       Api.post("/addServices", {
-        title: data.title,
-        description: data.description,
-        price: data.price,
+        title: title,
+        description:description,
+        price: price,
         image: photoUrl,
+        type: type
       }).then((response) => {
         setmsg("your service saved!");
       });
@@ -83,6 +84,23 @@ const AddService = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col-md-6">
+
+
+                <div className="form-group">
+                  <label htmlFor="Service title">Select Type</label>
+                  <select name="title"
+                    className="form-control"
+                    type="text"
+                    {...register("type", { required: true })}>
+
+                      <option value="mobile">mobile Repair</option>
+                      <option value="leptop">Leptop Repair</option>
+                      <option value="tv">tv Repair</option>
+                      <option value="electronics">Electronics Repair</option>
+                    </select>
+                  {errors.type && <span className="text-warning">This field is required</span>}
+                </div> 
+                
                 <div className="form-group">
                   <label htmlFor="Service title">Service title</label>
                   <input
@@ -93,6 +111,7 @@ const AddService = () => {
                   />
                   {errors.title && <span className="text-warning">This field is required</span>}
                 </div>
+ 
                 <div className="form-group">
                   <label htmlFor="Service Description">
                     Service Description

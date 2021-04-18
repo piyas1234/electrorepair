@@ -1,7 +1,4 @@
-import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Api from "../../Axios/Api";
 import SideNav from "../../navigatoin/SideNav";
 import ProductCard from "../../Shared/ProductCard";

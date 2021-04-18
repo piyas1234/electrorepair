@@ -21,8 +21,12 @@ const Home = () => {
       setreview(res.data);
     });
   }, []);
+
   return data.length < 1 && review.length < 1 ? (
-    <div style={{height:"1000px"}}> <Spinner></Spinner></div>
+    <div style={{ height: "1000px" }}>
+      {" "}
+      <Spinner></Spinner>
+    </div>
   ) : (
     <div>
       <Slider></Slider>
