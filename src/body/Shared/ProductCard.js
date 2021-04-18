@@ -12,10 +12,7 @@ const ProductCard = ({data}) => {
             <div className="gx-3 col-md-6 col-lg-4 col-sm-6 mt-4 text-white">
               <div
                className="p-4 productCard"
-                style={{
-                  backgroundColor: "#ffffff1a",
-                  boxShadow: "3px 3px 3px 3px  rgba(255, 255, 255, 0.226)",
-                }}
+                
                 
               >
                 <div className="productImg" style={{ height: "300px" }}>
