@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Kiwi+Maru:wght@500&display=swap');
+.app{
+  font-family:Arial, Helvetica, sans-serif
+}
+
+ 
+
+.form-message{
+   padding:10px;
+   position: fixed;
+   bottom: 70px;
+ 
+}
+
+.message{
+   max-height:500px;
+   overflow: auto;
+    
+
+   
+}
+
+.title{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  margin-top: 0px;
+  
+}

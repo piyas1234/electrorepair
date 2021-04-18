@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Api from "../Axios/Api";
+import Messanger from "../Messanger/Messanger";
 import Spinner from "../Shared/Spinner";
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -20,13 +21,13 @@ const Home = () => {
       setreview(res.data);
     });
   }, []);
-  return data.length < 1 && review.length<1 ? (
-     <Spinner></Spinner>
-     
-  ) :(
+  return data.length < 1 && review.length < 1 ? (
+    <Spinner></Spinner>
+  ) : (
     <div>
       <Slider></Slider>
       <Services data={data}></Services>
+      <Messanger></Messanger>
       <OurServiceList></OurServiceList>
       <About></About>
       <Reviews review={review}></Reviews>
